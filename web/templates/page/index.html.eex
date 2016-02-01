@@ -2,6 +2,6 @@
   <h1>Today my goal is</h1>
   <form id='goal_form'>
     <input id='goal_input' type='text'></input>
-    <input id='goal_submit' class="button-primary" value="Lets Go" type="submit">
+    <input id='goal_submit' class='button-primary' value='Hey! Oh! Lets Go!' type='submit' maxlength='200'>
   </form>
 </div>
