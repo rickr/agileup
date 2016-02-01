@@ -1,7 +1,7 @@
 <div id='goal'>
   <h1>Today my goal is</h1>
-  <form id='goal_form'>
-    <input id='goal_input' type='text'></input>
+  <%= form_for @conn, page_path(@conn, :submit_goal), [name: :submit_goal, method: 'post'], fn f -> %>
+    <%= text_input f, :goal_input %>
     <input id='goal_submit' class='button-primary' value='Hey! Oh! Lets Go!' type='submit' maxlength='200'>
-  </form>
+  <% end %>
 </div>

@@ -18,8 +18,7 @@ import "phoenix_html"
 // Local files can be imported directly using relative
 // paths "./socket" or full ones "web/static/js/socket".
 
-// import socket from "./socket"
-$('#goal_form').on('submit', function(e){
-  e.preventDefault();
-  var goal = encodeURIComponent($("#goal_input").val());
-});
+//$('#goal_form').on('submit', function(e){
+//  e.preventDefault();
+//  var goal = encodeURIComponent($("#goal_input").val());
+//});
