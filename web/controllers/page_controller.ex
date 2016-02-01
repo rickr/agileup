@@ -1,4 +1,5 @@
 defmodule Agileup.PageController do
+  require Logger
   use Agileup.Web, :controller
 
   def index(conn, _params) do
@@ -14,8 +15,7 @@ defmodule Agileup.PageController do
 
 
   defp send_to_slack(conn, goal) do
-    IO.puts "Sending #{goal} to slack"
-    IO.puts webhook_url
+    Logger.info "Sending #{goal} to slack via webhook #{webhook_url}"
     HTTPoison.post!(webhook_url, generate_payload_for(goal))
     conn
   end
