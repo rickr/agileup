@@ -8,4 +8,5 @@ build:
 
 
 deploy:
-	docker tag $(IMAGE_NAME):latest $(TUTUM_IMAGE_NAME)
+	docker tag -f $(IMAGE_NAME):latest $(TUTUM_IMAGE_NAME)
+	docker push $(TUTUM_IMAGE_NAME)

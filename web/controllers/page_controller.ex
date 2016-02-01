@@ -15,8 +15,8 @@ defmodule Agileup.PageController do
 
 
   defp send_to_slack(conn, goal) do
-    Logger.info "Sending #{goal} to slack via webhook #{webhook_url}"
-    HTTPoison.post!(webhook_url, generate_payload_for(goal))
+    Logger.info "Sending #{goal} to slack via webhook \"#{webhook_url}\""
+    spawn fn -> HTTPoison.post!(webhook_url, generate_payload_for(goal)) end
     conn
   end
 
