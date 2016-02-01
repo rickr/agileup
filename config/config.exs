@@ -20,6 +20,9 @@ config :logger, :console,
   metadata: [:request_id]
 
 config :agileup, webhook_url: System.get_env("WEBHOOK_URL")
+{:ok, version} = File.read("version")
+version = version |> String.rstrip(?\n)
+config :agileup, version: version
 
 # Import environment specific config. This must remain at the bottom
 # of this file so it overrides the configuration defined above.
@@ -29,3 +32,4 @@ import_config "#{Mix.env}.exs"
 config :phoenix, :generators,
   migration: true,
   binary_id: false
+

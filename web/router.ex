@@ -7,6 +7,7 @@ defmodule Agileup.Router do
     plug :fetch_flash
     plug :protect_from_forgery
     plug :put_secure_browser_headers
+    plug :assign_version
   end
 
   pipeline :api do
@@ -18,6 +19,14 @@ defmodule Agileup.Router do
 
     get "/", PageController, :index
     post "/submit_goal", PageController, :submit_goal
+  end
+
+  defp assign_version(conn, _params) do
+    assign(conn, :version, get_version)
+  end
+
+  defp get_version do
+    Application.get_env(:agileup, :version)
   end
 
   # Other scopes may use custom stacks.
