@@ -26,7 +26,6 @@ config :agileup, Agileup.Endpoint,
 
 # Do not include metadata nor timestamps in development logs
 config :logger, :console, format: "[$level] $message\n"
-config :agileup, webhook_url: System.get_env("WEBHOOK_URL")
 
 # Set a higher stacktrace during development.
 # Do not configure such in production as keeping

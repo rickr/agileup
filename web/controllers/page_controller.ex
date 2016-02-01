@@ -22,7 +22,6 @@ defmodule Agileup.PageController do
 
   defp webhook_url do
     Application.get_env(:agileup, :webhook_url)
-    #"https://hooks.slack.com/services/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"
   end
 
   defp generate_payload_for(goal) do
