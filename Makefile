@@ -9,5 +9,5 @@ build:
 	docker tag $(IMAGE_NAME):latest $(IMAGE_NAME):$(VERSION)
 
 deploy:
-	docker tag $(IMAGE_NAME):$(VERSION) $(TUTUM_IMAGE_NAME)
+	docker tag -f $(IMAGE_NAME):$(VERSION) $(TUTUM_IMAGE_NAME)
 	docker push $(TUTUM_IMAGE_NAME)
