@@ -15,12 +15,14 @@ defmodule Agileup.PageController do
 
   defp send_to_slack(conn, goal) do
     IO.puts "Sending #{goal} to slack"
+    IO.puts webhook_url
     HTTPoison.post!(webhook_url, generate_payload_for(goal))
     conn
   end
 
   defp webhook_url do
-    "https://hooks.slack.com/services/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"
+    Application.get_env(:agileup, :webhook_url)
+    #"https://hooks.slack.com/services/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"
   end
 
   defp generate_payload_for(goal) do

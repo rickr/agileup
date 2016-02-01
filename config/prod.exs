@@ -19,6 +19,8 @@ config :agileup, Agileup.Endpoint,
 # Do not print debug messages in production
 config :logger, level: :info
 
+config :agileup, webhook_url: System.get_env("WEBHOOK_URL")
+
 # ## SSL Support
 #
 # To get SSL working, you will need to add the `https` key
