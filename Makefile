@@ -1,5 +1,5 @@
 IMAGE_NAME = rickr/agileup
-TUTUM_IMAGE_NAME = tutum.co/rickr/agileup:web
+DOCKER_IMAGE_NAME = rickr/agileup:web
 VERSION = $(shell cat version)
 
 all: build deploy
@@ -9,5 +9,5 @@ build:
 	docker tag $(IMAGE_NAME):latest $(IMAGE_NAME):$(VERSION)
 
 deploy:
-	docker tag -f $(IMAGE_NAME):$(VERSION) $(TUTUM_IMAGE_NAME)
-	docker push $(TUTUM_IMAGE_NAME)
+	docker tag -f $(IMAGE_NAME):$(VERSION) $(DOCKER_IMAGE_NAME)
+	docker push $(DOCKER_IMAGE_NAME)
