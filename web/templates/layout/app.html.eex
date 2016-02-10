@@ -17,8 +17,8 @@
 
   <body>
     <div id='container'>
-      <% if assigns[:has_error] do %>
-      <p class="alert alert-danger" role="alert"><%= get_flash(@conn, :error) %></p>
+      <%= if error = get_flash(@conn, :error) do %>
+        <p class="alert alert-danger" role="alert"><%= error %></p>
       <% end %>
       <%= render @view_module, @view_template, assigns %>
     <div>
