@@ -1,4 +1,2 @@
-<div id='goal'>
-  <h1>Today my goal is</h1>
-  <%= @goal %>
-</div>
+<h1>Today my goal is</h1>
+<%= @goal %>

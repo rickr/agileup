@@ -49,6 +49,7 @@ defmodule Agileup.Mixfile do
       {:gettext, "~> 0.9"},
       {:cowboy, "~> 1.0"},
       {:httpoison, "~> 0.8.0"},
+      {:guardian, "~> 0.9.0"},
    ]
   end
 

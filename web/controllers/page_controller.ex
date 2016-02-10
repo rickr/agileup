@@ -2,6 +2,9 @@ defmodule Agileup.PageController do
   require Logger
   use Agileup.Web, :controller
 
+  plug Guardian.Plug.EnsureAuthenticated, handler: Agileup.Access
+
+
   def index(conn, _params) do
     render conn, "index.html"
   end
@@ -27,4 +30,5 @@ defmodule Agileup.PageController do
   defp generate_payload_for(goal) do
     "{\"text\": \"Today my goal is:\n#{goal}\"}"
   end
+
 end

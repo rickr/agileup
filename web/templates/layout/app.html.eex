@@ -16,7 +16,10 @@
   </head>
 
   <body>
-    <%= render @view_module, @view_template, assigns %>
+    <div id='container'>
+      <p class="alert alert-danger" role="alert"><%= get_flash(@conn, :error) %></p>
+      <%= render @view_module, @view_template, assigns %>
+    <div>
     <script src="https://code.jquery.com/jquery-2.2.0.min.js"></script>
     <script src="<%= static_path(@conn, "/js/app.js") %>"></script>
   </body>
