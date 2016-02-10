@@ -19,11 +19,17 @@ config :logger, :console,
   format: "$time $metadata[$level] $message\n",
   metadata: [:request_id]
 
-# Configure version
+# Configure Slack
 config :agileup, webhook_url: System.get_env("WEBHOOK_URL")
+
+# Configure version
 {:ok, version} = File.read("version")
 version = version |> String.rstrip(?\n)
 config :agileup, version: version
+
+# Configure Janrain
+config :agileup, :janrain_api_url, System.get_env("JANRAIN_API_URL")
+config :agileup, :janrain_api_key, System.get_env("JANRAIN_API_KEY")
 
 # Configure Guardian
 config :guardian, Guardian,

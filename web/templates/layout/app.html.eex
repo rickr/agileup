@@ -17,7 +17,9 @@
 
   <body>
     <div id='container'>
+      <% if assigns[:has_error] do %>
       <p class="alert alert-danger" role="alert"><%= get_flash(@conn, :error) %></p>
+      <% end %>
       <%= render @view_module, @view_template, assigns %>
     <div>
     <script src="https://code.jquery.com/jquery-2.2.0.min.js"></script>
