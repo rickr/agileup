@@ -3,3 +3,7 @@
   <%= text_input f, :goal_input %>
   <input id='goal_submit' class='button-primary' value='Hey! Oh! Lets Go!' type='submit' maxlength='200'>
 <% end %>
+
+<div id='settings'>
+  <i class="fa fa-wrench"></i> <a href='/settings'>Settings</a>
+</div>
