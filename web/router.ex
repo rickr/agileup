@@ -33,8 +33,6 @@ defmodule Agileup.Router do
     get "/", PageController, :index
     post "/submit_goal", PageController, :submit_goal
 
-    resources "/users", UserController
-
     get "/login", SessionController, :new
   end
 
