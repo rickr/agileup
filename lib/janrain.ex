@@ -26,9 +26,6 @@ defmodule Janrain do
 
   Returns `{:failed}`.
 
-  ## Examples
-  iex> Janrain.authenticate_user_with("not_a_good_token")
-  {:failed}
   """
   def authenticate_user_with(token) do
     token
