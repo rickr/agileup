@@ -16,7 +16,7 @@ defmodule Agileup.SessionController do
         conn
         |> save_new_user(identifier)
         |> Guardian.Plug.sign_in(identifier)
-        |> redirect to: "/"
+        |> redirect_to_settings_or_home(identifier)
       {:failed} ->
         conn
         |> put_flash(:error, "Uhoh! We failed to log you in. =(")
@@ -49,6 +49,13 @@ defmodule Agileup.SessionController do
         Logger.debug "Inserted"
       {:error, _changeset} ->
         Logger.error "Unable to create user for identifier #{identifier}"
+    end
+  end
+
+  defp redirect_to_settings_or_home(conn, identifier) do
+    case User.new?(identifier)  do
+      true -> redirect conn, to: user_path(conn, :edit)
+      _ -> redirect conn, to: page_path(conn, :index)
     end
   end
 end
