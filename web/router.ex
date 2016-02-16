@@ -34,6 +34,9 @@ defmodule Agileup.Router do
     post "/submit_goal", PageController, :submit_goal
 
     get "/login", SessionController, :new
+
+    get "/settings", UserController, :edit
+    post "/settings", UserController, :update
   end
 
   scope "/", Agileup do
