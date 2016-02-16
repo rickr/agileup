@@ -14,7 +14,7 @@ defmodule Agileup.SessionController do
     case identifier do
       {:ok, identifier} ->
         conn
-        |> create_session(identifier)
+        |> save_new_user(identifier)
         |> Guardian.Plug.sign_in(identifier)
         |> redirect to: "/"
       {:failed} ->
@@ -35,7 +35,7 @@ defmodule Agileup.SessionController do
     end
   end
 
-  defp create_session(conn, identifier) do
+  defp save_new_user(conn, identifier) do
     Logger.debug "Checking if #{identifier} is new user: #{User.new?(identifier)}"
     if User.new?(identifier), do:  save_identifier identifier
     conn
