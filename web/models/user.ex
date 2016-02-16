@@ -5,12 +5,13 @@ defmodule Agileup.User do
   schema "users" do
     field :name, :string
     field :identifier, :string
+    field :slack_webhook, :string
 
     timestamps
   end
 
   @required_fields ~w(identifier)
-  @optional_fields ~w(name)
+  @optional_fields ~w(name slack_webhook)
 
   @doc """
   Creates a changeset based on the `model` and `params`.
