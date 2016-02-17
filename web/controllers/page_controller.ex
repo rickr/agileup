@@ -10,8 +10,8 @@ defmodule Agileup.PageController do
 
 
   # If our user doesn't have a name or webhook setup redirect them to the settings page
-  def index(conn, _params, %Agileup.User{name: nil} = user, _claims), do: redirect_to_settings(conn)
-  def index(conn, _params, %Agileup.User{slack_webhook: nil} = user, _claims), do: redirect_to_settings(conn)
+  def index(conn, _params, %Agileup.User{name: nil} = _user, _claims), do: redirect_to_settings(conn)
+  def index(conn, _params, %Agileup.User{slack_webhook: nil} = _user, _claims), do: redirect_to_settings(conn)
 
   def index(conn, _params, user, _claims) do
     render conn, "index.html"
@@ -26,7 +26,7 @@ defmodule Agileup.PageController do
 
   defp redirect_to_settings(conn) do
     conn
-    |> redirect to: user_path(Endpoint, :edit)
+    |> redirect(to: user_path(Endpoint, :edit))
   end
 
 

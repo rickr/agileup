@@ -11,7 +11,7 @@ defmodule Agileup.UserController do
   def edit(conn, _params, user, _claims) do
     conn
     |> assign(:user, user)
-    |> render "edit.html"
+    |> render("edit.html")
   end
 
   # POST /settings
@@ -25,7 +25,7 @@ defmodule Agileup.UserController do
 
       conn
       |> put_flash(:success, "Your settings have been saved")
-      |> redirect to: page_path(conn, :index)
+      |> redirect(to: page_path(conn, :index))
     else
       conn
       |> put_flash(:error, "There was a problem saving your settings.")

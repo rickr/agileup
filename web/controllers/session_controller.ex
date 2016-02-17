@@ -20,7 +20,7 @@ defmodule Agileup.SessionController do
       {:failed} ->
         conn
         |> put_flash(:error, "Uhoh! We failed to log you in. =(")
-        |> redirect to: "/login"
+        |> redirect(to: "/login")
     end
   end
 

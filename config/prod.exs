@@ -18,13 +18,18 @@ config :agileup, Agileup.Endpoint,
 # Do not print debug messages in production
 config :logger, level: :info
 
+db_hostname = case System.get_env("SHARED_POSTGRESQL_PORT") do
+  nil -> "localhost"
+  value -> List.first(Regex.run(~r/tcp:\/\/(.*):5432/, value, capture: :all_but_first))
+end
+
 # Configure your database
 config :agileup, Agileup.Repo,
   adapter: Ecto.Adapters.Postgres,
   username: "postgres",
   password: "postgres",
   database: "agileup_prod",
-  hostname: List.first(Regex.run(~r/tcp:\/\/(.*):5432/, System.get_env("SHARED_POSTGRESQL_PORT"), capture: :all_but_first)),
+  hostname: db_hostname,
   pool_size: 20
 
 
