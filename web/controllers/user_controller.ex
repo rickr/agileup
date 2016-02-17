@@ -9,7 +9,9 @@ defmodule Agileup.UserController do
 
   # GET /settings
   def edit(conn, _params, user, _claims) do
-    render conn, "edit.html"
+    conn
+    |> assign(:user, user)
+    |> render "edit.html"
   end
 
   # POST /settings

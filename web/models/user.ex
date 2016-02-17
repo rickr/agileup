@@ -22,6 +22,7 @@ defmodule Agileup.User do
   def changeset(model, params \\ :empty) do
     model
     |> cast(params, @required_fields, @optional_fields)
+    |> validate_length(:name, min: 2)
     |> validate_format(:slack_webhook, ~r/https:\/\/hooks\.slack\.com\/services/)
   end
 

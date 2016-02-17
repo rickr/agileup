@@ -17,10 +17,10 @@ defmodule Agileup.PageController do
     render conn, "index.html"
   end
 
-  def submit_goal(conn, %{"submit_goal" => %{"goal_input" => goal}}) do
+  def submit_goal(conn, %{"submit_goal" => %{"goal_input" => goal}}, user, _claims) do
     conn
     |> assign(:goal, goal)
-    |> send_to_slack(goal)
+    |> send_to_slack(user, goal)
     |> render("goal_submitted.html")
   end
 
@@ -30,17 +30,13 @@ defmodule Agileup.PageController do
   end
 
 
-  defp send_to_slack(conn, goal) do
-    Logger.info "Sending #{goal} to slack via webhook \"#{webhook_url}\""
-    spawn fn -> HTTPoison.post!(webhook_url, generate_payload_for(goal)) end
+  defp send_to_slack(conn, user, goal) do
+    Logger.info "Sending #{user.name}'s #{goal} to slack via webhook \"#{user.slack_webhook}\""
+    spawn fn -> HTTPoison.post!(user.slack_webhook, generate_payload_for(user, goal)) end
     conn
   end
 
-  defp webhook_url do
-    Application.get_env(:agileup, :webhook_url)
-  end
-
-  defp generate_payload_for(goal) do
-    "{\"text\": \"Today my goal is:\n#{goal}\"}"
+  defp generate_payload_for(user, goal) do
+    "{\"text\": \"Today #{user.name}'s goal is:\n#{goal}\"}"
   end
 end
