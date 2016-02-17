@@ -24,7 +24,7 @@ config :agileup, Agileup.Repo,
   username: "postgres",
   password: "postgres",
   database: "agileup_prod",
-  hostname: List.first(Regex.run(~r/tcp:\/\/(.*):5432/, "tcp://10.7.0.4:5432", capture: :all_but_first)),
+  hostname: List.first(Regex.run(~r/tcp:\/\/(.*):5432/, System.get_env("SHARED_POSTGRESQL_PORT"), capture: :all_but_first)),
   pool_size: 20
 
 
