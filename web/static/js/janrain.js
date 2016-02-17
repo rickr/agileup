@@ -2,7 +2,7 @@
     if (typeof window.janrain !== 'object') window.janrain = {};
     if (typeof window.janrain.settings !== 'object') window.janrain.settings = {};
 
-    janrain.settings.tokenUrl = window.location.href + '/login';
+    janrain.settings.tokenUrl = window.location.href
 
     function isReady() { janrain.ready = true; };
     if (document.addEventListener) {
