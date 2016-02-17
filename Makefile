@@ -6,7 +6,7 @@ all: build deploy
 
 build:
 	docker build -t $(IMAGE_NAME) .
-	docker tag $(IMAGE_NAME):latest $(IMAGE_NAME):$(VERSION)
+	docker tag -f $(IMAGE_NAME):latest $(IMAGE_NAME):$(VERSION)
 
 deploy:
 	docker tag -f $(IMAGE_NAME):$(VERSION) $(DOCKER_IMAGE_NAME)
