@@ -19,6 +19,16 @@ config :agileup, Agileup.Endpoint,
 # Do not print debug messages in production
 config :logger, level: :info
 
+# Configure your database
+config :agileup, Agileup.Repo,
+  adapter: Ecto.Adapters.Postgres,
+  username: "postgres",
+  password: "postgres",
+  database: "agileup_prod",
+  hostname: List.first(Regex.run(~r/tcp:\/\/(.*):5432/, "tcp://10.7.0.4:5432", capture: :all_but_first)),
+  pool_size: 20
+
+
 # ## SSL Support
 #
 # To get SSL working, you will need to add the `https` key
