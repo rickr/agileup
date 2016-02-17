@@ -13,7 +13,7 @@ defmodule Agileup.PageController do
   def index(conn, _params, %Agileup.User{name: nil} = _user, _claims), do: redirect_to_settings(conn)
   def index(conn, _params, %Agileup.User{slack_webhook: nil} = _user, _claims), do: redirect_to_settings(conn)
 
-  def index(conn, _params, user, _claims) do
+  def index(conn, _params, _user, _claims) do
     render conn, "index.html"
   end
 
