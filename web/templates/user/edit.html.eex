@@ -1,0 +1,7 @@
+<h3>Configure Settings</h3>
+
+<%= form_for @conn, user_path(@conn, :update), [as: 'settings', method: 'post'], fn f -> %>
+  <%= text_input f, :name, placeholder: "Your Name", value: @user.name %>
+  <%= text_input f, :slack_webhook, placeholder: "Slack Webhook", value: @user.slack_webhook %>
+  <input id='goal_submit' class='button-primary' value='Save Plz' type='submit'>
+<% end %>

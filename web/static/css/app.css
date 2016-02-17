@@ -1,4 +1,4 @@
-#goal {
+#container {
   position: absolute;
   left: 50%;
   top: 40%;
@@ -17,4 +17,13 @@
 #goal_submit{
   font-size: 1.5em;
   height: 2em;
+}
+
+/* Hack around janrain squished header */
+#janrainProviderPages { padding-top: 20px !important; }
+
+.alert-danger {
+  background-color: #FFCCCC;
+  border: 1px solid #FF0000;
+  padding: 10px 5px;
 }

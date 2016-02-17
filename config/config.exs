@@ -19,10 +19,24 @@ config :logger, :console,
   format: "$time $metadata[$level] $message\n",
   metadata: [:request_id]
 
+# Configure Slack
 config :agileup, webhook_url: System.get_env("WEBHOOK_URL")
+
+# Configure version
 {:ok, version} = File.read("version")
 version = version |> String.rstrip(?\n)
 config :agileup, version: version
+
+# Configure Janrain
+config :agileup, :janrain_api_url, System.get_env("JANRAIN_API_URL")
+config :agileup, :janrain_api_key, System.get_env("JANRAIN_API_KEY")
+
+# Configure Guardian
+config :guardian, Guardian,
+  issuer: "AgileUp",
+  ttl: { 30, :days },
+  secret_key: "490eadf849a007a162d5e0cc0263740d351a7f80",
+  serializer: AgileUp.GuardianSerializer
 
 # Import environment specific config. This must remain at the bottom
 # of this file so it overrides the configuration defined above.

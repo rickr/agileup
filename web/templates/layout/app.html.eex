@@ -10,13 +10,19 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300italic,700,700italic">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/3.0.3/normalize.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/milligram/1.0.3/milligram.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
 
     <link rel="stylesheet" href="<%= static_path(@conn, "/css/app.css") %>">
     <title>Agile Up Sucka</title>
   </head>
 
   <body>
-    <%= render @view_module, @view_template, assigns %>
+    <div id='container'>
+      <%= if error = get_flash(@conn, :error) do %>
+        <p class="alert alert-danger" role="alert"><%= error %></p>
+      <% end %>
+      <%= render @view_module, @view_template, assigns %>
+    <div>
     <script src="https://code.jquery.com/jquery-2.2.0.min.js"></script>
     <script src="<%= static_path(@conn, "/js/app.js") %>"></script>
   </body>

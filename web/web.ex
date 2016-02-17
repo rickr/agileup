@@ -78,4 +78,8 @@ defmodule Agileup.Web do
   defmacro __using__(which) when is_atom(which) do
     apply(__MODULE__, which, [])
   end
+
+  def show_landing_page do
+    IO.puts "Hello"
+  end
 end
