@@ -27,7 +27,8 @@ defmodule Agileup.Mixfile do
         :gettext,
         :phoenix_ecto,
         :postgrex,
-        :httpoison
+        :httpoison,
+        :janrain
       ]
     ]
   end
@@ -50,7 +51,9 @@ defmodule Agileup.Mixfile do
       {:cowboy, "~> 1.0"},
       {:httpoison, "~> 0.8.0"},
       {:guardian, "~> 0.9.0"},
+      {:janrain, "~> 0.0.1"}
    ]
+ #{:janrain, github: "rickr/janrain"}
   end
 
   # Aliases are shortcut or tasks specific to the current project.
